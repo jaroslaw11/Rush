@@ -8,6 +8,8 @@ public class AIHealth : MonoBehaviour
 
     public UnityEvent<int> onDamage;
 
+    [SerializeField] GameObject onDamageFX;
+
     public void InitHealth()
     {
         CurrentHP = defaultHP;
@@ -17,5 +19,7 @@ public class AIHealth : MonoBehaviour
     {
         CurrentHP -= _damage;
         onDamage.Invoke(CurrentHP);
+        onDamageFX.SetActive(false);
+        onDamageFX.SetActive(true);
     }
 }

@@ -31078,7 +31078,7 @@ MonoBehaviour:
   fixTargetTransforms: 1
   solverIterationCount: 6
   visualizeTargetPose: 1
-  mappingWeight: 1
+  mappingWeight: 0
   pinWeight: 1
   muscleWeight: 1
   muscleSpring: 15

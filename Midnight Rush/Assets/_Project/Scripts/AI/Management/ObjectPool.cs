@@ -16,9 +16,9 @@ public class ObjectPool : MonoBehaviour
             return null;
         }
 
-        AIEnemy newEnemy = pool.Pop();
-        newEnemy.gameObject.SetActive(true);
+        AIEnemy newEnemy = pool.Pop();    
         newEnemy.transform.position = _inGamePosition.position;
+        newEnemy.gameObject.SetActive(true);
         newEnemy.OnTake();
 
         return newEnemy;
@@ -28,8 +28,8 @@ public class ObjectPool : MonoBehaviour
     {
         _enemy.OnReturn();
         pool.Push(_enemy);
-        _enemy.transform.position = transform.position;
         _enemy.gameObject.SetActive(false);
+        _enemy.transform.position = transform.position;     
     }
 
     public void InitPool(AIEnemy[] _enemies)

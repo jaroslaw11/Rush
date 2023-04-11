@@ -15,6 +15,7 @@ public class AIDeathState : TAIState
     IEnumerator DisappearAfter()
     {
         yield return new WaitForSeconds(disappearDuration);
+        GetComponent<AIEnemy>().puppet.mappingWeight = 0;
         onDissapear.Invoke();
     }
 
@@ -23,13 +24,16 @@ public class AIDeathState : TAIState
         base.Enter();
         ScoreManager._instance.kills.AddCurrency(1);
         StartCoroutine(DisappearAfter());
+        GetComponent<AIEnemy>().puppet.mappingWeight = 1;
         GetComponent<AIEnemy>().puppet.Kill();
         GetComponent<AISounds>().PlayDeath();
+        
     }
 
     public override void Exit()
     {
         //GetComponent<AIEnemy>().puppet.Resurrect();
+        
         base.Exit();
     }
 }

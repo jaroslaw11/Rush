@@ -62,15 +62,18 @@ public class AIEnemy : MonoBehaviour, IPoolable
     {
         stateManager.ApplyState<AIChasingState>();
         healthComponent.InitHealth();
+        puppet.enabled = true;
+        
         if (!puppet.isAlive) puppet.Resurrect();
         if (!puppet.isActive) puppet.SwitchToActiveMode();
         GetComponent<AISounds>().PlayReborn();
-
+        
     }
 
     public void OnReturn()
     {
         Debug.Log("return to pool: " + gameObject.name);
         puppet.SwitchToDisabledMode();
+        puppet.enabled = false;
     }
 }
